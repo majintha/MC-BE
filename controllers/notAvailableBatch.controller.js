@@ -17,6 +17,21 @@ const createNotAvailableBatch = (req, res) => {
     });
 };
 
+const ViewNotAvailableleBatch = (req, res) => {
+    NotAvailableBatch.find({}).then(result => {
+        res.status(200).json({
+            success: true,
+            data: result
+        });
+    }).catch(err => {
+        res.status(501).json({
+            success: false,
+            message: err.message
+        });
+    });
+};
+
 module.exports = {
-    createNotAvailableBatch
+    createNotAvailableBatch,
+    ViewNotAvailableleBatch
 }
