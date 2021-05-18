@@ -30,7 +30,7 @@ const viewSessions = (req, res) => {
     .populate("selectedLecturer")
     .populate("selectedSubject")
     .populate("selectedGroup")
-    
+    .populate('suitable_rooms')   
     .then((result) => {
       res.status(200).json({
         success: true,
@@ -63,17 +63,17 @@ const viewSessionsById = (req, res) => {
 };
 
 const updateSessionById = (req, res) => {
-  if (!req.body.lecName) {
+  if (!req.body.selectedLecturer) {
     return res.status(400).json({
       success: false,
-      message: "Lecture name is undefined",
+      message: "Selected session is undefined",
     });
   }
 
-  if (!req.body.subName) {
+  if (!req.body.selectedSubject) {
     return res.status(400).json({
       success: false,
-      message: "Subject Name is undefined",
+      message: "Selected subject Name is undefined",
     });
   }
 
