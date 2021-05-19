@@ -3,5 +3,8 @@ const notAvailableSessionController = require('../controllers/notAvailableSessio
 
 router.post('/nasession', notAvailableSessionController.createNotAvailableSession);
 router.get('/nasession', notAvailableSessionController.ViewNotAvailableSession);
+router.get('/nasession', notAvailableSessionController.viewUnavailabilitylById);
+router.get('/nasession', notAvailableSessionController.viewAllLecturers);
+router.delete('/nasession', notAvailableSessionController.deleteunavailabilitylById);
 
 module.exports = router;

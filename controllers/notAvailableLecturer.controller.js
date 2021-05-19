@@ -17,6 +17,20 @@ const createNotAvailableLecturer = (req, res) => {
     });
 };
 
+const viewAllLecturers = (req, res) => {
+    NotAvailableLecturer.find({}).then(result => {
+        res.status(200).json({
+            success: true,
+            data: result
+        });
+    }).catch(err => {
+        res.status(501).json({
+            success: false,
+            message: err.message
+        });
+    });
+};
+
 const ViewNotAvailableleLecturer = (req, res) => {
     NotAvailableLecturer.find({}).then(result => {
         res.status(200).json({
@@ -31,7 +45,38 @@ const ViewNotAvailableleLecturer = (req, res) => {
     });
 };
 
+const viewUnavailabilitylById = (req, res) => {
+    NotAvailableLecturer.findById(req.params.id).then(result => {
+        res.status(200).json({
+            success: true,
+            data: result
+        });
+    }).catch(err => {
+        res.status(501).json({
+            success: false,
+            message: err.message
+        });
+    });
+};
+
+const deleteunavailabilitylById = (req, res) => {
+    NotAvailableLecturer.findByIdAndDelete(req.params.id).then(result => {
+        res.status(200).json({
+            success: true,
+            data: result
+        });
+    }).catch(err => {
+        res.status(501).json({
+            success: false,
+            message: err.message
+        });
+    });
+};
+
 module.exports = {
     createNotAvailableLecturer,
+    deleteunavailabilitylById,
+    viewUnavailabilitylById,
+    viewAllLecturers,
     ViewNotAvailableleLecturer
 }
